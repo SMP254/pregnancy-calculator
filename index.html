@@ -47,8 +47,58 @@ Date
     <p><strong>Current Pregnancy Week:</strong> <span id="week"></span></p>
     <p><strong>Current Trimester:</strong> <span id="trimester"></span></p>
   </div>  <p style="text-align: center; margin-top: 2rem;">
-  ❤️ Found this helpful? <strong>Share it with an expecting mom!</strong>
-</p>
+  <!-- 📢 Share Section with Styling -->
+<style>
+  .share-buttons a {
+    display: inline-block;
+    margin: 8px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .whatsapp {
+    background: #25D366;
+  }
+
+  .whatsapp:hover {
+    background: #1ebd5c;
+  }
+
+  .facebook {
+    background: #3b5998;
+  }
+
+  .facebook:hover {
+    background: #2d4373;
+  }
+
+  .twitter {
+    background: #1da1f2;
+  }
+
+  .twitter:hover {
+    background: #0d8ddb;
+  }
+
+  .share-section {
+    text-align: center;
+    margin-top: 2rem;
+  }
+</style>
+
+<div class="share-section">
+  <p>❤️ Found this helpful? <strong>Share it with an expecting mom!</strong></p>
+  <div class="share-buttons">
+    <a class="whatsapp" href="https://wa.me/?text=Try%20this%20Pregnancy%20Due%20Date%20Calculator%20-%20https%3A%2F%2Fduedatenow.netlify.app" target="_blank">📱 WhatsApp</a>
+    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://duedatenow.netlify.app" target="_blank">📘 Facebook</a>
+    <a class="twitter" href="https://x.com/intent/tweet?text=Check%20out%20this%20Pregnancy%20Due%20Date%20Calculator%20-%20https%3A%2F%2Fduedatenow.netlify.app" target="_blank">🐦 X (Twitter)</a>
+  </div>
+</div>
 
   <script>
     function calculateDueDate() {
