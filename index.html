@@ -111,6 +111,15 @@ Date
 </div>
 
 <script>
+  function showCurrentDate() {
+  const now = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = now.toLocaleDateString(undefined, options);
+  document.getElementById("currentDate").textContent = "Today’s Date: " + formattedDate;
+}
+
+showCurrentDate(); // Run on page load
+
   function copyLink() {
     const url = 'https://duedatenow.netlify.app';
     navigator.clipboard.writeText(url).then(function () {
