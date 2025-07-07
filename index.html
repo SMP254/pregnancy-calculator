@@ -51,9 +51,10 @@ Date
     <p><strong>Current Pregnancy Week:</strong> <span id="week"></span></p>
     <p><strong>Current Trimester:</strong> <span id="trimester"></span></p>
   </div>  <p style="text-align: center; margin-top: 2rem;">
-  <!-- 📢 Share Section with Styling (Final + Fixed Email) -->
+  <!-- 📢 Share Section with Styling (WhatsApp, Facebook, X, Copy Link) -->
 <style>
-  .share-buttons a {
+  .share-buttons a,
+  .share-buttons button {
     display: inline-block;
     margin: 8px;
     padding: 10px 16px;
@@ -62,6 +63,8 @@ Date
     font-weight: bold;
     font-size: 14px;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
     transition: background 0.3s ease;
   }
 
@@ -74,12 +77,24 @@ Date
   .twitter { background: #1da1f2; }
   .twitter:hover { background: #0d8ddb; }
 
-  .email { background: #6c63ff; }
-  .email:hover { background: #5a54d6; }
+  .copy-btn {
+    background: #6c63ff;
+  }
+
+  .copy-btn:hover {
+    background: #5a54d6;
+  }
 
   .share-section {
     text-align: center;
     margin-top: 2rem;
+  }
+
+  .copy-msg {
+    font-size: 0.9rem;
+    color: green;
+    margin-top: 0.5rem;
+    display: none;
   }
 </style>
 
@@ -89,9 +104,21 @@ Date
     <a class="whatsapp" href="https://wa.me/?text=Try%20this%20Pregnancy%20Due%20Date%20Calculator%20-%20https://duedatenow.netlify.app" target="_blank">📱 WhatsApp</a>
     <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://duedatenow.netlify.app" target="_blank">📘 Facebook</a>
     <a class="twitter" href="https://x.com/intent/tweet?text=Check out this Pregnancy Due Date Calculator - https://duedatenow.netlify.app" target="_blank">🐦 X (Twitter)</a>
-    <a class="email" href="mailto:?subject=Pregnancy Due Date Calculator&body=I found this free pregnancy calculator that estimates your due date accurately.%0D%0A%0D%0ACheck it out here: https://duedatenow.netlify.app" target="_blank">✉️ Email</a>
+    <button class="copy-btn" onclick="copyLink()">🔗 Copy Link</button>
   </div>
+  <p id="copyMsg" class="copy-msg">✅ Link copied to clipboard!</p>
 </div>
+
+<script>
+  function copyLink() {
+    const url = 'https://duedatenow.netlify.app';
+    navigator.clipboard.writeText(url).then(function () {
+      const msg = document.getElementById('copyMsg');
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 3000);
+    });
+  }
+</script>
 
   <script>
     function calculateDueDate() {
