@@ -1,168 +1,98 @@
-
-
+<!DOCTYPE html>
 <html lang="en">
-<<meta name="description" content="Free online pregnancy due date calculator. Estimate your baby’s due date based on your last menstrual period (LMP). Fast, simple, and accurate.">
-<meta name="keywords" content="pregnancy calculator, due date calculator, LMP calculator, estimate due date, pregnancy week tracker">
-<meta name="author" content="DueDateNow">
-<title>DueDateNow — Pregnancy Due Date Calculator</title>
->
+<head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pregnancy Due Date Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f8fa;
-      padding: 2rem;
-      max-width: 600px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    input, button {
-      width: 100%;
-      padding: 0.8rem;
-      margin: 0.5rem 0;
-      font-size: 1rem;
-    }
-    .result {
-      margin-top: 1.5rem;
-      background: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-  </style>
-</head>
-<body>
-  <p id="currentDate" style="text-align: center; font-weight: bold; margin-top: 1rem;"></p>
-  <h1>Pregnancy Due Date Calculator</h1>
-  <p style="max-width: 600px; margin: auto; text-align: center;">
-  Welcome to <strong>DueDateNow</strong> — a free pregnancy due date calculator that helps you estimate your baby’s expected arrival based on the first day of your last period. Our tool also tells you how far along you are and which trimester you're in.
-</p> <br>
-  <label for="lmp">Enter First Day of Last Menstrual Period (LMP):</label>
-  <input type="date" id="lmp">
-  <button onclick="calculateDueDate()">Calculate Due Date</button>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <div class="result" id="result" style="display:none;">
+  <!-- ✅ SEO Meta Tags -->
+  <title>DueDateNow – Free Pregnancy Due Date Calculator</title>
+  <meta name="description" content="Free online pregnancy due date calculator. Enter the first day of your last menstrual period to find your expected due date, current pregnancy week, and trimester.">
+  <meta name="keywords" content="pregnancy calculator, due date calculator, LMP calculator, pregnancy week tracker, trimester calculator">
+  <meta name="author" content="DueDateNow">
+  <link rel="canonical" href="https://duedatenow.netlify.app/">
+
+  <!-- ✅ Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"DueDateNow",
+    "url":"https://duedatenow.netlify.app/",
+    "applicationCategory":"MedicalApplication",
+    "description":"Free pregnancy due date calculator based on LMP to estimate your baby's arrival."
+  }
+  </script>
+
+  <!-- ✅ Add your CSS if any -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ✅ Today’s Date -->
+  <p id="currentDate" style="text-align: center; font-weight: bold; margin-top: 1rem;"></p>
+
+  <!-- ✅ Page Heading -->
+  <h1 style="text-align: center;">Pregnancy Due Date Calculator</h1>
+
+  <!-- ✅ Intro Text -->
+  <p style="max-width: 600px; margin: auto; text-align: center;">
+    Welcome to <strong>DueDateNow</strong> — a free pregnancy due date calculator that helps you estimate your baby’s expected arrival based on the first day of your last period. Our tool also tells you how far along you are and which trimester you're in.
+  </p>
+
+  <!-- ✅ Calculator Form -->
+  <div style="text-align: center; margin-top: 2rem;">
+    <label for="lmp">Enter the first day of your last period:</label><br />
+    <input type="date" id="lmp" name="lmp" />
+    <button onclick="calculateDueDate()">Calculate</button>
+  </div>
+
+  <!-- ✅ Result Section -->
+  <div class="result" id="result" style="display: none; text-align: center; margin-top: 1rem;">
     <p><strong>Estimated Due Date:</strong> <span id="dueDate"></span></p>
     <p><strong>Current Pregnancy Week:</strong> <span id="week"></span></p>
     <p><strong>Current Trimester:</strong> <span id="trimester"></span></p>
-  </div>  <p style="text-align: center; margin-top: 2rem;">
-  <!-- 📢 Share Section with Styling (WhatsApp, Facebook, X, Copy Link) -->
-<style>
-  .share-buttons a,
-  .share-buttons button {
-    display: inline-block;
-    margin: 8px;
-    padding: 10px 16px;
-    border-radius: 25px;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  .whatsapp { background: #25D366; }
-  .whatsapp:hover { background: #1ebd5c; }
-
-  .facebook { background: #3b5998; }
-  .facebook:hover { background: #2d4373; }
-
-  .twitter { background: #1da1f2; }
-  .twitter:hover { background: #0d8ddb; }
-
-  .copy-btn {
-    background: #6c63ff;
-  }
-
-  .copy-btn:hover {
-    background: #5a54d6;
-  }
-
-  .share-section {
-    text-align: center;
-    margin-top: 2rem;
-  }
-
-  .copy-msg {
-    font-size: 0.9rem;
-    color: green;
-    margin-top: 0.5rem;
-    display: none;
-  }
-</style>
-
-<div class="share-section">
-  <p>❤️ Found this helpful? <strong>Share it with an expecting mom!</strong></p>
-  <div class="share-buttons">
-    <a class="whatsapp" href="https://wa.me/?text=Try%20this%20Pregnancy%20Due%20Date%20Calculator%20-%20https://duedatenow.netlify.app" target="_blank">📱 WhatsApp</a>
-    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://duedatenow.netlify.app" target="_blank">📘 Facebook</a>
-    <a class="twitter" href="https://x.com/intent/tweet?text=Check out this Pregnancy Due Date Calculator - https://duedatenow.netlify.app" target="_blank">🐦 X (Twitter)</a>
-    <button class="copy-btn" onclick="copyLink()">🔗 Copy Website Link</button>
   </div>
-  <p id="copyMsg" class="copy-msg">✅ Link copied to clipboard!</p>
-</div>
 
-<script>
-  function showCurrentDate() {
-  const now = new Date();
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const formattedDate = now.toLocaleDateString(undefined, options);
-  document.getElementById("currentDate").textContent = "Today’s Date: " + formattedDate;
-}
+  <!-- ✅ Share Buttons (if already added) -->
+  <!-- Paste your sharing block here -->
 
-showCurrentDate(); // Run on page load
-
-  function copyLink() {
-    const url = 'https://duedatenow.netlify.app';
-    navigator.clipboard.writeText(url).then(function () {
-      const msg = document.getElementById('copyMsg');
-      msg.style.display = 'block';
-      setTimeout(() => msg.style.display = 'none', 3000);
-    });
-  }
-</script>
-
+  <!-- ✅ JS -->
   <script>
+    function showCurrentDate() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = now.toLocaleDateString(undefined, options);
+      document.getElementById("currentDate").textContent = "Today’s Date: " + formattedDate;
+    }
+
     function calculateDueDate() {
-      const lmpInput = document.getElementById('lmp').value;
+      const lmpInput = document.getElementById("lmp").value;
       if (!lmpInput) return;
 
-      const lmpDate = new Date(lmpInput);
-      const dueDate = new Date(lmpDate.getTime() + 280 * 24 * 60 * 60 * 1000); // 280 days
+      const lmp = new Date(lmpInput);
+      const dueDate = new Date(lmp);
+      dueDate.setDate(dueDate.getDate() + 280);
 
       const today = new Date();
-      const diffTime = today - lmpDate;
-      const diffDays = diffTime / (1000 * 60 * 60 * 24);
-      const currentWeek = Math.floor(diffDays / 7);
-      let trimester = '';
+      const diff = today - lmp;
+      const week = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
 
-      if (currentWeek <= 13) trimester = 'First Trimester';
-      else if (currentWeek <= 27) trimester = 'Second Trimester';
-      else trimester = 'Third Trimester';
+      let trimester = "";
+      if (week <= 13) trimester = "First";
+      else if (week <= 27) trimester = "Second";
+      else trimester = "Third";
 
-      document.getElementById('dueDate').textContent = dueDate.toDateString();
-      document.getElementById('week').textContent = currentWeek + ' weeks';
-      document.getElementById('trimester').textContent = trimester;
-      document.getElementById('result').style.display = 'block';
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById("dueDate").textContent = dueDate.toLocaleDateString(undefined, options);
+      document.getElementById("week").textContent = week;
+      document.getElementById("trimester").textContent = trimester;
+
+      document.getElementById("result").style.display = "block";
     }
-  </script>
-  <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ccc; font-size: 0.9rem; color: #555; text-align: center;">
-  <p><strong>Pregnancy Due Date Calculator</strong></p>
-  <p>For educational use only. Always consult your doctor or midwife for medical advice.</p>
-  
-  <p>
-    <a href="terms.html" style="color: #0077cc; text-decoration: none;">Terms of Use</a> |
-    <a href="privacy.html" style="color: #0077cc; text-decoration: none;">Privacy Policy</a>
-  </p>
 
-  <p>&copy; 2025 DueDateNow. All rights reserved.</p>
-</footer>
+    showCurrentDate();
+  </script>
+
 </body>
 </html>
