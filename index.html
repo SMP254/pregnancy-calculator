@@ -222,39 +222,7 @@ showCurrentDate(); // Run on page load
       document.getElementById('trimester').textContent = trimester;
       document.getElementById('result').style.display = 'block';
       const shareMessage = `👶 My estimated due date is ${dueDate}! Calculate yours at https://duedatenow.online 💕`;
-      <script>
-function calculateDueDate() {
-  const lmp = document.getElementById("lmp").value;
-  if (!lmp) return;
-
-  const lmpDate = new Date(lmp);
-  const dueDateObj = new Date(lmpDate.getTime() + 280 * 24 * 60 * 60 * 1000); // 280 days
-
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  const dueDate = dueDateObj.toLocaleDateString('en-US', options);
-
-  document.getElementById("result").innerHTML = "🍼 Your estimated due date is: <strong>" + dueDate + "</strong>";
-
-  // Create share message
-  const shareMessage = `👶 My estimated due date is ${dueDate}! Calculate yours at https://duedatenow.online 💕`;
-
-  // Set WhatsApp link
-  document.getElementById("whatsapp-share").href = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
-
-  // Copy button functionality
-  document.getElementById("copy-btn").onclick = function () {
-    navigator.clipboard.writeText(shareMessage).then(() => {
-      document.getElementById("copy-confirmation").style.display = "inline";
-      setTimeout(() => {
-        document.getElementById("copy-confirmation").style.display = "none";
-      }, 2000);
-    });
-  };
-
-  // Show the share section
-  document.getElementById("share-section").style.display = "block";
-}
-
+      
 // Set WhatsApp link
 document.getElementById("whatsapp-share").href = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
 
