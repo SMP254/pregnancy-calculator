@@ -221,6 +221,23 @@ showCurrentDate(); // Run on page load
       document.getElementById('week').textContent = currentWeek + ' weeks';
       document.getElementById('trimester').textContent = trimester;
       document.getElementById('result').style.display = 'block';
+      const shareMessage = `👶 My estimated due date is ${dueDate}! Calculate yours at https://duedatenow.online 💕`;
+
+// Set WhatsApp link
+document.getElementById("whatsapp-share").href = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+
+// Show the share section
+document.getElementById("share-section").style.display = "block";
+
+// Copy button function
+function copyResult() {
+  navigator.clipboard.writeText(shareMessage).then(() => {
+    document.getElementById("copy-confirmation").style.display = "inline";
+    setTimeout(() => {
+      document.getElementById("copy-confirmation").style.display = "none";
+    }, 2000);
+  });
+}
     }
   </script>
   <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ccc; font-size: 0.9rem; color: #555; text-align: center;">
