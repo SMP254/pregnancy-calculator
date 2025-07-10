@@ -227,6 +227,11 @@ showCurrentDate(); // Run on page load
   else trimester = 'Third Trimester';
 
   document.getElementById('dueDate').textContent = dueDate.toDateString();
+      document.getElementById('dueDate').textContent = dueDate.toDateString();
+document.getElementById('usedCycle').textContent = cycleLength;
+document.getElementById('week').textContent = currentWeek + ' weeks';
+document.getElementById('trimester').textContent = trimester;
+
   document.getElementById('week').textContent = currentWeek + ' weeks';
   document.getElementById('trimester').textContent = trimester;
 
