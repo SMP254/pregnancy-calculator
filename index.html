@@ -70,8 +70,12 @@
   Welcome to <strong>DueDateNow</strong> — a free pregnancy due date calculator that helps you estimate your baby’s expected arrival based on the first day of your last period. Our tool also tells you how far along you are and which trimester you're in.
 </p> <br><br><br>
   <label for="lmp">Enter First Day of Last Menstrual Period (LMP):</label>
-  <input type="date" id="lmp">
-  <button onclick="calculateDueDate()">Calculate Due Date</button>
+<input type="date" id="lmp" required>
+
+<label for="cycleLength">Average Length of Your Cycle (in days):</label>
+<input type="number" id="cycleLength" name="cycleLength" min="21" max="41" value="28" required>
+
+<button onclick="calculateDueDate()">Calculate Due Date</button>
 
   <div class="result" id="result" style="display:none;">
     <p><strong>Estimated Due Date:</strong> <span id="dueDate"></span></p>
