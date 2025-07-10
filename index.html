@@ -79,7 +79,6 @@
 
   <div class="result" id="result" style="display:none;">
     <p><strong>Estimated Due Date:</strong> <span id="dueDate"></span></p>
-    <p><strong>Based on a cycle length of:</strong> <span id="usedCycle"></span> days</p>
     <p><strong>Current Pregnancy Week:</strong> <span id="week"></span></p>
     <p><strong>Current Trimester:</strong> <span id="trimester"></span></p>
     <div id="share-section" style="display: none; margin-top: 20px;">
@@ -227,7 +226,6 @@ showCurrentDate(); // Run on page load
   else trimester = 'Third Trimester';
 
   document.getElementById('dueDate').textContent = dueDate.toDateString();
-  document.getElementById('usedCycle').textContent = cycleLength;
   document.getElementById('week').textContent = currentWeek + ' weeks';
   document.getElementById('trimester').textContent = trimester;
 
