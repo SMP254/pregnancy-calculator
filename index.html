@@ -206,44 +206,46 @@ showCurrentDate(); // Run on page load
 
   <script>
     function calculateDueDate() {
-      const lmpInput = document.getElementById('lmp').value;
-      if (!lmpInput) return;
+  const lmpInput = document.getElementById('lmp').value;
+  const cycleLength = parseInt(document.getElementById('cycleLength').value);
 
-      const lmpDate = new Date(lmpInput);
-      const dueDate = new Date(lmpDate.getTime() + 280 * 24 * 60 * 60 * 1000); // 280 days
+  if (!lmpInput || isNaN(cycleLength)) return;
 
-      const today = new Date();
-      const diffTime = today - lmpDate;
-      const diffDays = diffTime / (1000 * 60 * 60 * 24);
-      const currentWeek = Math.floor(diffDays / 7);
-      let trimester = '';
+  const lmpDate = new Date(lmpInput);
+  const adjustedDays = 280 + (cycleLength - 28); // adjusts for cycle length
+  const dueDate = new Date(lmpDate.getTime() + adjustedDays * 24 * 60 * 60 * 1000);
 
-      if (currentWeek <= 13) trimester = 'First Trimester';
-      else if (currentWeek <= 27) trimester = 'Second Trimester';
-      else trimester = 'Third Trimester';
+  const today = new Date();
+  const diffTime = today - lmpDate;
+  const diffDays = diffTime / (1000 * 60 * 60 * 24);
+  const currentWeek = Math.floor(diffDays / 7);
+  let trimester = '';
 
-      document.getElementById('dueDate').textContent = dueDate.toDateString();
-      document.getElementById('week').textContent = currentWeek + ' weeks';
-      document.getElementById('trimester').textContent = trimester;
-      document.getElementById('result').style.display = 'block';
-      const shareMessage = `👶 My estimated due date is ${dueDate}! Calculate yours at https://duedatenow.online 💕`;
+  if (currentWeek <= 13) trimester = 'First Trimester';
+  else if (currentWeek <= 27) trimester = 'Second Trimester';
+  else trimester = 'Third Trimester';
 
-document.getElementById("copy-btn").onclick = function () {
-  navigator.clipboard.writeText(shareMessage).then(() => {
-    document.getElementById("copy-confirmation").style.display = "inline";
-    setTimeout(() => {
-      document.getElementById("copy-confirmation").style.display = "none";
-    }, 2000);
-  }).catch(err => {
-    alert("Failed to copy. Please try again.");
-  });
-};
-      
-// Set WhatsApp link
-document.getElementById("whatsapp-share").href = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+  document.getElementById('dueDate').textContent = dueDate.toDateString();
+  document.getElementById('week').textContent = currentWeek + ' weeks';
+  document.getElementById('trimester').textContent = trimester;
+  document.getElementById('result').style.display = 'block';
 
-// Show the share section
-document.getElementById("share-section").style.display = "block";
+  const shareMessage = `👶 My estimated due date is ${dueDate.toDateString()} (based on a ${cycleLength}-day cycle)! Calculate yours at https://duedatenow.online 💕`;
+
+  document.getElementById("copy-btn").onclick = function () {
+    navigator.clipboard.writeText(shareMessage).then(() => {
+      document.getElementById("copy-confirmation").style.display = "inline";
+      setTimeout(() => {
+        document.getElementById("copy-confirmation").style.display = "none";
+      }, 2000);
+    }).catch(err => {
+      alert("Failed to copy. Please try again.");
+    });
+  };
+
+  document.getElementById("whatsapp-share").href = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+  document.getElementById("share-section").style.display = "block";
+}
 
 // Copy button function
 function copyResult() {
